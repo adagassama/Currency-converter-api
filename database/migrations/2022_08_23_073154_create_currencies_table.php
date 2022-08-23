@@ -15,7 +15,13 @@ return new class extends Migration
     {
         Schema::create('currencies', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 3)->nullable();
+
+            $table->string('code')->unique();
+            $table->string('name')->unique();
+            $table->string('symbol');
+
+            $table->boolean('is_default');
+
             $table->timestamps();
         });
     }

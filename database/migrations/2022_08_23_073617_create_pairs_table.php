@@ -15,8 +15,17 @@ return new class extends Migration
     {
         Schema::create('pairs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 20)->nullable();
-            $table->decimal('rate', 2, 2)->nullable();
+
+            $table->integer('from_id')->unsigned();
+            $table->foreign('from_id')->references('id')->on('currencies');
+            $table->integer('to_id')->unsigned();
+            $table->foreign('to_id')->references('id')->on('currencies');
+
+            $table->decimal('conversion', 12, 6);
+
+            $table->date('date')->index();
+
+            $table->unique(['from_id', 'to_id', 'date']);
             $table->timestamps();
         });
     }

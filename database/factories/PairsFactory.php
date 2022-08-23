@@ -9,15 +9,15 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class PairsFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected $model = ExchangeRate::class;
+
     public function definition()
     {
         return [
-            //
+            'from_id' => fn () => Currency::factory(),
+            'to_id' => fn () => Currency::factory(),
+            'conversion' => $this->faker->randomFloat(4, 0.0001, 10.0000),
+            'date' => now()->subDays(rand(15, 40)),
         ];
     }
 }

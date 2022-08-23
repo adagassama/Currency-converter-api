@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class pairs extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
+
+    protected $dates = ['date'];
+
+    public function from()
+    {
+        return $this->belongsTo(Currency::class, 'from_id');
+    }
+
+    public function to()
+    {
+        return $this->belongsTo(Currency::class, 'to_id');
+    }
 }
