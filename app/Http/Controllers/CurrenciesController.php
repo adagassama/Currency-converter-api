@@ -1,23 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Http\Resources\PairResource;
-use App\Models\Pairs;
-use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use App\Http\Requests\StorecurrenciesRequest;
+use App\Http\Requests\UpdatecurrenciesRequest;
+use App\Models\currencies;
 
-class PairsController extends Controller
+class CurrenciesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index():AnonymousResourceCollection
+    public function index()
     {
-        return PairResource::collection(Pairs::with('from', 'to')->latest()->get());
+        //
     }
 
     /**
@@ -33,10 +31,10 @@ class PairsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StorecurrenciesRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorecurrenciesRequest $request)
     {
         //
     }
@@ -44,10 +42,10 @@ class PairsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Pairs  $pairs
+     * @param  \App\Models\currencies  $currencies
      * @return \Illuminate\Http\Response
      */
-    public function show(Pairs $pairs)
+    public function show(currencies $currencies)
     {
         //
     }
@@ -55,10 +53,10 @@ class PairsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Pairs  $pairs
+     * @param  \App\Models\currencies  $currencies
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pairs $pairs)
+    public function edit(currencies $currencies)
     {
         //
     }
@@ -66,11 +64,11 @@ class PairsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pairs  $pairs
+     * @param  \App\Http\Requests\UpdatecurrenciesRequest  $request
+     * @param  \App\Models\currencies  $currencies
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pairs $pairs)
+    public function update(UpdatecurrenciesRequest $request, currencies $currencies)
     {
         //
     }
@@ -78,10 +76,10 @@ class PairsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Pairs  $pairs
+     * @param  \App\Models\currencies  $currencies
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pairs $pairs)
+    public function destroy(currencies $currencies)
     {
         //
     }
