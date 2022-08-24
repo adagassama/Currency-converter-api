@@ -9,8 +9,6 @@ class pairs extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
-
     protected $dates = ['date'];
 
     public function from()

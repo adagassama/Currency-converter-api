@@ -8,15 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class currency extends Model
 {
     use HasFactory;
-
-    protected $guarded = ['id'];
+    protected $fillable = ['code', 'name'];
 
     public function fromPairs()
     {
         return $this->hasMany(Pairs::class, 'from_id');
     }
 
-    public function toPairsExchangeRates()
+    public function toPairs()
     {
         return $this->hasMany(Pairs::class, 'to_id');
     }
