@@ -9,20 +9,14 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class CurrencyFactory extends Factory
 {
-    protected $model = Currency::class;
 
     public function definition()
     {
-        $country = Country::whereNotIn(
-            'currency_code',
-            Currency::pluck('code')->toArray()
-        )->inRandomOrder()->first();
 
         return [
-            'code' => $country->currency_code,
-            'name' => $country->currency,
-            'symbol' => $this->faker->unique()->randomLetter,
-            'is_default' => Currency::default()->first() === null,
+            'code' => $this->faker->currency_code,
+            'name' => $this->faker->currency,
+            'symbol' => $this->faker->unique()->randomLetter
         ];
     }
 }
